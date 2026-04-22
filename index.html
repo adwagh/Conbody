@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coss Marte — Motivational Speaker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C8A84E;
+    --gold-light: #E8D48B;
+    --black: #0A0A0A;
+    --dark: #111111;
+    --paper: #F5F0E8;
+    --white: #FFFFFF;
+    --gray: #888888;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  .druk {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1003;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: rgba(10,10,10,0.9);
+    backdrop-filter: blur(20px);
+    border-bottom: 2px solid var(--gold);
+  }
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 30px; align-items: center; }
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a.btn-nav {
+    background: var(--gold);
+    color: var(--black);
+    padding: 10px 24px;
+    font-weight: 900;
+  }
+  .nav-links a.btn-nav:hover { background: var(--gold-light); }
+
+  /* PAGE SWITCHING */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.3) 50%, rgba(10,10,10,0.8) 100%),
+      url('https://latintrends.com/wp-content/uploads/2019/09/0J8A7267-1.jpg') center/cover no-repeat;
+    filter: contrast(1.1);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 80px 60px;
+    max-width: 1400px;
+    width: 100%;
+  }
+  .hero-main {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+  }
+  .hero-left { flex: 1; }
+  .hero-right {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    border-left: 4px solid var(--gold);
+    padding-left: 16px;
+  }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 0.88;
+    font-size: clamp(4rem, 10vw, 9rem);
+    margin-bottom: 10px;
+  }
+  .hero h1 .line-gold { color: var(--gold); }
+  .hero h1 .line-stroke {
+    -webkit-text-stroke: 2px var(--white);
+    color: transparent;
+  }
+  .hero-sub {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 550px;
+    margin: 30px 0 40px;
+    color: rgba(255,255,255,0.8);
+  }
+  .hero-cta {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 35px 55px;
+    background: var(--gold);
+    color: var(--black);
+    text-decoration: none;
+    transition: all 0.3s;
+    border: 4px solid var(--gold);
+    line-height: 1.1;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .hero-cta:hover {
+    background: transparent;
+    color: var(--gold);
+  }
+
+  /* TICKER */
+  .ticker {
+    background: var(--gold);
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-top: 3px solid var(--black);
+    border-bottom: 3px solid var(--black);
+  }
+  .ticker-track {
+    display: inline-flex;
+    animation: scroll-ticker 30s linear infinite;
+  }
+  .ticker-item {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--black);
+    padding: 0 40px;
+  }
+  .ticker-item::after { content: '\2022'; margin-left: 40px; }
+  @keyframes scroll-ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 3px solid var(--gold);
+  }
+  .stat-item {
+    text-align: center;
+    padding: 50px 20px;
+    border-right: 1px solid rgba(200,168,78,0.3);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-number {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 3.5rem;
+    color: var(--white);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    margin-top: 8px;
+  }
+
+  /* STORY SECTION */
+  .story {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 600px;
+  }
+  .story-image {
+    min-height: 500px;
+    position: relative;
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .story-image a {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('https://i.ytimg.com/vi/XHQQyCRtl-4/hqdefault.jpg') center/cover no-repeat;
+    text-decoration: none;
+  }
+  .story-image a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    transition: background 0.3s;
+  }
+  .story-image a:hover::after {
+    background: rgba(0,0,0,0.15);
+  }
+  .play-btn {
+    position: relative;
+    z-index: 2;
+    width: 80px;
+    height: 80px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+  }
+  .play-btn::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 0 15px 28px;
+    border-color: transparent transparent transparent var(--black);
+    margin-left: 5px;
+  }
+  .story-image a:hover .play-btn {
+    transform: scale(1.15);
+  }
+  .story-text {
+    background: var(--dark);
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 5px solid var(--gold);
+  }
+  .story-text .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .story-text h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 3rem;
+    text-transform: uppercase;
+    line-height: 0.95;
+    margin-bottom: 30px;
+  }
+  .story-text p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 15px;
+  }
+  .story-quote {
+    border-left: 4px solid var(--gold);
+    padding-left: 20px;
+    margin: 30px 0;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: var(--gold);
+    line-height: 1.2;
+  }
+
+  /* PILLARS */
+  .pillars {
+    background: var(--paper);
+    padding: 100px 60px;
+    color: var(--black);
+  }
+  .pillars .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .pillars h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 4rem;
+    text-transform: uppercase;
+    line-height: 0.9;
+    margin-bottom: 60px;
+  }
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .pillar-card {
+    padding: 40px 30px;
+    border: 2px solid var(--black);
+    border-right: none;
+    transition: all 0.3s;
+  }
+  .pillar-card:nth-child(3n) { border-right: 2px solid var(--black); }
+  .pillar-card:nth-child(n+4) { border-top: none; }
+  .pillar-card:hover {
+    background: var(--black);
+    color: var(--white);
+  }
+  .pillar-number {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 3rem;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .pillar-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .pillar-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    opacity: 0.7;
+  }
+
+  /* SPEAKING TOPICS */
+  .topics {
+    padding: 100px 60px;
+    background: var(--black);
+  }
+  .topics .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .topics h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 4rem;
+    text-transform: uppercase;
+    line-height: 0.9;
+    margin-bottom: 60px;
+  }
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .topic-card {
+    background: var(--dark);
+    padding: 50px 35px;
+    border-bottom: 4px solid var(--gold);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .topic-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    background: var(--gold);
+    transition: height 0.4s;
+  }
+  .topic-card:hover::before { height: 100%; }
+  .topic-card:hover { color: var(--black); }
+  .topic-card > * { position: relative; z-index: 1; }
+  .topic-icon {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  .topic-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .topic-desc {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    opacity: 0.7;
+  }
+
+  /* PRESS LOGOS */
+  .press-logos {
+    background: var(--dark);
+    padding: 60px;
+    border-top: 3px solid var(--gold);
+    border-bottom: 3px solid var(--gold);
+  }
+  .press-logos .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .logos-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+  }
+  .logo-item {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.4);
+    transition: color 0.3s;
+    text-decoration: none;
+  }
+  .logo-item:hover { color: var(--gold); }
+
+  /* TESTIMONIAL */
+  .testimonial {
+    background: var(--gold);
+    color: var(--black);
+    padding: 100px 60px;
+    text-align: center;
+  }
+  .testimonial blockquote {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    line-height: 1.1;
+    max-width: 900px;
+    margin: 0 auto 30px;
+  }
+  .testimonial cite {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    font-style: normal;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(rgba(10,10,10,0.85), rgba(10,10,10,0.85)),
+      url('https://latintrends.com/wp-content/uploads/2019/09/0J8A7267-1.jpg') center/cover no-repeat;
+  }
+  .cta-content {
+    position: relative;
+    z-index: 2;
+    padding: 60px;
+  }
+  .cta-content h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 5rem;
+    text-transform: uppercase;
+    line-height: 0.9;
+    margin-bottom: 25px;
+  }
+  .cta-content h2 span { color: var(--gold); }
+  .cta-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 550px;
+    margin: 0 auto 40px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* CTA STRIP */
+  .cta-strip {
+    background: var(--gold);
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    border-top: 3px solid var(--black);
+    border-bottom: 3px solid var(--black);
+  }
+  .cta-strip h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--black);
+  }
+  .cta-strip-btn {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 16px 40px;
+    background: var(--black);
+    color: var(--white);
+    text-decoration: none;
+    border: 3px solid var(--black);
+    white-space: nowrap;
+    transition: all 0.3s;
+  }
+  .cta-strip-btn:hover {
+    background: transparent;
+    color: var(--black);
+  }
+  @media (max-width: 900px) {
+    .cta-strip { flex-direction: column; text-align: center; padding: 30px 25px; }
+  }
+
+  /* BOOKING FORM */
+  .booking-section {
+    background: var(--paper);
+    padding: 100px 60px;
+    color: var(--black);
+  }
+  .booking-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .booking-section .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .booking-section h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 4rem;
+    text-transform: uppercase;
+    line-height: 0.9;
+    margin-bottom: 50px;
+  }
+  .booking-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-group.full-width {
+    grid-column: 1 / -1;
+  }
+  .form-group label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+    color: var(--black);
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    padding: 14px 18px;
+    border: 2px solid var(--black);
+    background: var(--white);
+    color: var(--black);
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+  }
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  .form-submit {
+    grid-column: 1 / -1;
+    margin-top: 10px;
+  }
+  .form-submit button {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 20px 60px;
+    background: var(--black);
+    color: var(--white);
+    border: 3px solid var(--black);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .form-submit button:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--black);
+  }
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+  }
+  .form-success h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 15px;
+  }
+  .form-success p {
+    font-size: 1.1rem;
+    color: var(--black);
+    opacity: 0.7;
+  }
+  @media (max-width: 900px) {
+    .booking-section { padding: 60px 25px; }
+    .booking-form { grid-template-columns: 1fr; }
+    .booking-section h2 { font-size: 2.5rem; }
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    border-top: 3px solid var(--gold);
+    padding: 50px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+  }
+  .footer-links { display: flex; gap: 30px; }
+  .footer-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* =================== PRESS PAGE =================== */
+  .press-hero {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 120px;
+    padding-bottom: 60px;
+  }
+  .press-hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg, rgba(10,10,10,0.8) 0%, rgba(10,10,10,0.5) 100%),
+      url('https://latintrends.com/wp-content/uploads/2019/09/0J8A7267-1.jpg') center 20%/cover no-repeat;
+  }
+  .press-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 60px;
+  }
+  .press-hero-content .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 15px;
+    border-left: 4px solid var(--gold);
+    padding-left: 16px;
+  }
+  .press-hero-content h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(3rem, 8vw, 7rem);
+    text-transform: uppercase;
+    line-height: 0.9;
+  }
+  .press-hero-content h1 span { color: var(--gold); }
+  .press-hero-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-top: 25px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* PRESS OUTLET BAR */
+  .outlet-bar {
+    background: var(--dark);
+    border-top: 3px solid var(--gold);
+    border-bottom: 3px solid var(--gold);
+    padding: 20px 60px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  .outlet-badge {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    padding: 8px 20px;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .outlet-badge:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  /* PRESS CARDS */
+  .press-grid-section {
+    padding: 80px 60px;
+    background: var(--black);
+  }
+  .press-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 2px;
+  }
+  .press-card {
+    background: var(--dark);
+    padding: 40px 35px;
+    border-bottom: 4px solid var(--gold);
+    transition: all 0.3s;
+    text-decoration: none;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+  }
+  .press-card:hover {
+    background: #1a1a1a;
+    transform: translateY(-4px);
+  }
+  .press-card-type {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .press-card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin-bottom: 15px;
+  }
+  .press-card-outlet {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .press-card-excerpt {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.6);
+    flex: 1;
+  }
+  .press-card-link {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-top: 20px;
+    text-decoration: none;
+  }
+  .press-card:hover .press-card-link { text-decoration: underline; }
+
+  /* MOBILE TAB BAR */
+  .mobile-tabs {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--black);
+    border-top: 2px solid var(--gold);
+    z-index: 9999;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px 0;
+    padding-bottom: env(safe-area-inset-bottom, 8px);
+  }
+  .mobile-tabs a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gray);
+    text-decoration: none;
+    text-align: center;
+    padding: 6px 8px;
+    flex: 1;
+    transition: color 0.2s;
+  }
+  .mobile-tabs a span {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 2px;
+  }
+  .mobile-tabs a:active,
+  .mobile-tabs a.active-tab {
+    color: var(--gold);
+  }
+
+  /* TABLET */
+  @media (max-width: 1100px) {
+    .hero h1 { font-size: clamp(3rem, 8vw, 6rem); }
+    .hero-cta { font-size: 1.5rem; padding: 28px 40px; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .pillar-grid { grid-template-columns: repeat(2, 1fr); }
+    .topics-grid { grid-template-columns: repeat(2, 1fr); }
+    .press-grid { grid-template-columns: repeat(2, 1fr); }
+    .pillars, .topics, .press-grid-section { padding: 80px 40px; }
+    .story-text { padding: 60px 40px; }
+    .booking-section { padding: 80px 40px; }
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .nav-links { display: none !important; }
+    .mobile-tabs { display: flex !important; }
+    body { padding-bottom: 70px; }
+    .nav-links a {
+      font-size: 1.5rem;
+      letter-spacing: 0.2em;
+    }
+    .nav-links a.btn-nav {
+      font-size: 1.3rem;
+      padding: 16px 40px;
+    }
+    nav { padding: 15px 25px; }
+
+    .hero { min-height: 90vh; }
+    .hero-content { padding: 40px 25px; }
+    .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.2em; }
+    .hero h1 { font-size: clamp(2.5rem, 12vw, 5rem); }
+    .hero-main { flex-direction: column; gap: 25px; align-items: flex-start; }
+    .hero-cta { font-size: 1.2rem; padding: 20px 30px; }
+    .hero-sub { font-size: 1rem; margin: 20px 0 30px; }
+
+    .stat-number { font-size: 2.5rem; }
+    .stat-item { padding: 30px 15px; }
+
+    .story { grid-template-columns: 1fr; }
+    .story-image { min-height: 280px; }
+    .story-text {
+      padding: 40px 25px;
+      border-left: none;
+      border-top: 5px solid var(--gold);
+    }
+    .story-text h2 { font-size: 2.2rem; }
+    .story-quote { font-size: 1.1rem; }
+
+    .cta-strip { flex-direction: column; text-align: center; padding: 30px 25px; }
+    .cta-strip h3 { font-size: 1.5rem; }
+
+    .pillars, .topics, .press-grid-section { padding: 50px 20px; }
+    .pillars h2, .topics h2 { font-size: 2.8rem; margin-bottom: 40px; }
+    .pillar-grid { grid-template-columns: 1fr; }
+    .pillar-card {
+      border-right: 2px solid var(--black) !important;
+      border-top: none;
+    }
+    .pillar-card:first-child { border-top: 2px solid var(--black); }
+
+    .topics-grid { grid-template-columns: 1fr; }
+    .topic-card { padding: 35px 25px; }
+
+    .press-grid { grid-template-columns: 1fr; }
+    .press-card { padding: 30px 25px; }
+
+    .logos-row { gap: 25px; }
+    .logo-item { font-size: 1rem; }
+    .press-logos { padding: 40px 25px; }
+
+    .outlet-bar { padding: 15px 20px; gap: 12px; }
+    .outlet-badge { font-size: 0.65rem; padding: 6px 14px; }
+
+    .testimonial { padding: 60px 25px; }
+    .testimonial blockquote { font-size: 1.6rem; }
+
+    .cta-content { padding: 40px 25px; }
+    .cta-content h2 { font-size: 2.5rem; }
+    .cta-content p { font-size: 0.95rem; }
+
+    .booking-section { padding: 50px 20px; }
+    .booking-section h2 { font-size: 2.5rem; margin-bottom: 35px; }
+    .booking-form { grid-template-columns: 1fr; }
+    .form-submit button { width: 100%; padding: 18px 30px; }
+
+    .press-hero { padding-top: 100px; min-height: 40vh; }
+    .press-hero-content { padding: 0 25px; }
+    .press-hero-content h1 { font-size: clamp(2.5rem, 10vw, 4rem); }
+
+    footer { flex-direction: column; gap: 20px; text-align: center; padding: 35px 25px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+
+  /* SMALL MOBILE */
+  @media (max-width: 400px) {
+    .hero h1 { font-size: 2.2rem; }
+    .hero-cta { font-size: 1rem; padding: 16px 24px; }
+    .stat-number { font-size: 2rem; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    .pillar-number { font-size: 2rem; }
+    .pillar-title { font-size: 1.2rem; }
+    .topic-title { font-size: 1.2rem; }
+    .press-card-title { font-size: 1.2rem; }
+    .booking-section h2 { font-size: 2rem; }
+    .testimonial blockquote { font-size: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Coss Marte</a>
+  <div class="nav-links" id="nav-links">
+    <a href="#" onclick="showPage('home')">Home</a>
+    <a href="#" onclick="showPage('press')">Press</a>
+    <a href="#story" onclick="showPageAndScroll('home','story')">Story</a>
+    <a href="#topics" onclick="showPageAndScroll('home','topics')">Topics</a>
+    <a href="#booking" onclick="showPage('home')" class="btn-nav">Book Coss</a>
+  </div>
+</nav>
+
+<!-- =================== HOME PAGE =================== -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Motivational Speaker &bull; Entrepreneur &bull; Fitness Pioneer</div>
+      <div class="hero-main">
+        <div class="hero-left">
+          <h1>
+            FROM <span class="line-gold">PRISON</span><br>
+            CELL <span class="line-stroke">TO PURPOSE</span>
+          </h1>
+          <p class="hero-sub">
+            Sentenced to 7 years. Lost 70 pounds in a 9x6 cell. Built a fitness empire on the streets of the Lower East Side.
+            Now Coss Marte shares his story with audiences worldwide.
+          </p>
+        </div>
+        <div class="hero-right">
+          <a href="#booking" onclick="showPage('home')" class="hero-cta">Book Coss<br>to Speak &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="ticker-item">Ellen DeGeneres Show</span>
+      <span class="ticker-item">TEDx</span>
+
+      <span class="ticker-item">CNN</span>
+      <span class="ticker-item">Forbes</span>
+      <span class="ticker-item">Inc. Magazine</span>
+
+      <span class="ticker-item">Impact Podcast</span>
+      <span class="ticker-item">NBC New York</span>
+      <span class="ticker-item">The New York Times</span>
+      <span class="ticker-item">Ellen DeGeneres Show</span>
+      <span class="ticker-item">TEDx</span>
+
+      <span class="ticker-item">CNN</span>
+      <span class="ticker-item">Forbes</span>
+      <span class="ticker-item">Inc. Magazine</span>
+
+      <span class="ticker-item">Impact Podcast</span>
+      <span class="ticker-item">NBC New York</span>
+      <span class="ticker-item">The New York Times</span>
+    </div>
+  </div>
+
+  <!-- STATS BAR -->
+  <section class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-number">200+</div>
+      <div class="stat-label">Media Features</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">70</div>
+      <div class="stat-label">Pounds Lost in Prison</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">$1M+</div>
+      <div class="stat-label">Revenue Generated</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">10K+</div>
+      <div class="stat-label">Lives Impacted</div>
+    </div>
+  </section>
+
+  <!-- STORY SECTION -->
+  <section class="story" id="story">
+    <div class="story-image">
+      <a href="https://www.youtube.com/watch?v=XHQQyCRtl-4" target="_blank">
+        <div class="play-btn"></div>
+      </a>
+    </div>
+    <div class="story-text">
+      <div class="section-label">The Origin</div>
+      <h2>From Solitary<br>to the Stage</h2>
+      <p>
+        At 23, Coss Marte was running one of the most profitable drug operations in New York City's Lower East Side,
+        pulling in over $2 million a year. Then came the arrest, the conviction, and a 7-year sentence.
+      </p>
+      <p>
+        Inside, a prison doctor told him he could die of a heart attack within 5 years. That was the turning point.
+        In a 9-by-6-foot cell, with no equipment and no space, Coss created a bodyweight workout system and lost 70 pounds in 6 months.
+      </p>
+      <div class="story-quote">
+        "They told me I was going to die. I decided to live."
+      </div>
+      <p>
+        After release, he founded ConBody &mdash; the first fitness studio in America staffed entirely by formerly incarcerated individuals.
+        Featured on Ellen, CNN, TEDx, and Forbes, Coss has turned his second chance into a movement.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA STRIP: STORY -->
+  <div class="cta-strip">
+    <h3>Want Coss at Your Next Event?</h3>
+    <a href="#booking" class="cta-strip-btn">Book Coss to Speak &rarr;</a>
+  </div>
+
+  <!-- PILLARS -->
+  <section class="pillars">
+    <div class="section-label">What Coss Stands For</div>
+    <h2>The Pillars</h2>
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-number">01</div>
+        <div class="pillar-title">Redemption</div>
+        <div class="pillar-desc">Everyone deserves a second chance. Coss's journey proves that your past doesn't define your future.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">02</div>
+        <div class="pillar-title">Resilience</div>
+        <div class="pillar-desc">From the streets to solitary to the stage. Building mental and physical toughness in the face of impossible odds.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">03</div>
+        <div class="pillar-title">Reinvention</div>
+        <div class="pillar-desc">Transforming a prison workout into a million-dollar brand. Showing what's possible when you refuse to stay down.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">04</div>
+        <div class="pillar-title">Community</div>
+        <div class="pillar-desc">Building ConBody on a mission to employ formerly incarcerated people — creating opportunity where none existed.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">05</div>
+        <div class="pillar-title">Health</div>
+        <div class="pillar-desc">Losing 70 lbs in a prison cell with zero equipment. Proving that fitness doesn't require fancy gyms or gear.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">06</div>
+        <div class="pillar-title">Entrepreneurship</div>
+        <div class="pillar-desc">Launching and scaling a business against all odds — with a record, no capital, and a vision that wouldn't quit.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEAKING TOPICS -->
+  <section class="topics" id="topics">
+    <div class="section-label">Keynote &amp; Workshop Topics</div>
+    <h2>What Coss<br>Speaks About</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-icon">&#9889;</div>
+        <div class="topic-title">Second Chances &amp; Redemption</div>
+        <div class="topic-desc">How to rewrite your story no matter where you've been. Real talk about transformation and ownership.</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-icon">&#128170;</div>
+        <div class="topic-title">Mental &amp; Physical Toughness</div>
+        <div class="topic-desc">The prison cell workout mentality — building discipline, grit, and unbreakable habits with zero resources.</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-icon">&#127942;</div>
+        <div class="topic-title">Entrepreneurship Against the Odds</div>
+        <div class="topic-desc">From $0 and a felony to a nationally recognized brand. The unfiltered truth about building something from nothing.</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-icon">&#129309;</div>
+        <div class="topic-title">Social Impact &amp; Criminal Justice</div>
+        <div class="topic-desc">Hiring the formerly incarcerated, breaking stigma, and creating opportunity through business.</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-icon">&#127775;</div>
+        <div class="topic-title">Overcoming Adversity</div>
+        <div class="topic-desc">From the Lower East Side to solitary confinement to Ellen. A raw story of hitting bottom and climbing back.</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-icon">&#128640;</div>
+        <div class="topic-title">Leadership &amp; Culture</div>
+        <div class="topic-desc">Building a team and culture that believes in people — especially the ones everyone else has given up on.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP: TOPICS -->
+  <div class="cta-strip">
+    <h3>Inspire Your Audience — Book Coss Today</h3>
+    <a href="#booking" class="cta-strip-btn">Book Coss to Speak &rarr;</a>
+  </div>
+
+  <!-- PRESS LOGOS -->
+  <section class="press-logos">
+    <div class="section-label">As Featured In</div>
+    <div class="logos-row">
+      <a class="logo-item" href="https://www.youtube.com/watch?v=XHQQyCRtl-4" target="_blank">Ellen</a>
+      <a class="logo-item" href="https://www.youtube.com/watch?v=ggT_3fjUts8" target="_blank">TEDx</a>
+      <a class="logo-item" href="https://www.cnn.com/2016/10/04/us/iyw-coss-marte" target="_blank">CNN</a>
+      <a class="logo-item" href="https://www.forbes.com/sites/annefield/2018/03/29/for-conbodys-founder-success-means-hiring-more-ex-offenders-like-himself/" target="_blank">Forbes</a>
+      <a class="logo-item" href="https://www.inc.com/magazine/201610/alix-stuart/conbody-building-stronger-lives-for-good.html" target="_blank">Inc.</a>
+      <a class="logo-item" href="https://www.nbcnewyork.com/news/national-international/hustling-the-streets-from-dealing-drugs-to-fitness-bootcamp/2010129/" target="_blank">NBC</a>
+      <a class="logo-item" href="https://www.nytimes.com/2016/04/10/nyregion/at-a-gym-in-manhattan-fitness-tips-from-ex-convicts.html" target="_blank">New York Times</a>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="testimonial">
+    <blockquote>"Coss Marte's story isn't just inspiring — it's a blueprint for anyone who's ever been told they can't."</blockquote>
+    <cite>&mdash; Event Organizer</cite>
+  </section>
+
+  <!-- BOOKING FORM -->
+  <section class="booking-section" id="booking">
+    <div class="booking-inner">
+      <div class="section-label">Let's Work Together</div>
+      <h2>Book Coss<br>to Speak</h2>
+      <form class="booking-form" id="booking-form">
+        <div class="form-group">
+          <label for="b-name">Your Name</label>
+          <input type="text" id="b-name" name="name" required placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label for="b-email">Email</label>
+          <input type="email" id="b-email" name="email" required placeholder="you@company.com">
+        </div>
+        <div class="form-group">
+          <label for="b-org">Organization</label>
+          <input type="text" id="b-org" name="organization" placeholder="Company or school name">
+        </div>
+        <div class="form-group">
+          <label for="b-type">Event Type</label>
+          <select id="b-type" name="event_type" required>
+            <option value="" disabled selected>Select event type</option>
+            <option value="corporate">Corporate Keynote</option>
+            <option value="conference">Conference</option>
+            <option value="university">University / School</option>
+            <option value="nonprofit">Nonprofit / Fundraiser</option>
+            <option value="workshop">Workshop</option>
+            <option value="podcast">Podcast / Media</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="b-date">Event Date</label>
+          <input type="date" id="b-date" name="event_date">
+        </div>
+        <div class="form-group">
+          <label for="b-audience">Expected Audience Size</label>
+          <input type="text" id="b-audience" name="audience_size" placeholder="e.g. 200">
+        </div>
+        <div class="form-group full-width">
+          <label for="b-message">Tell Us About Your Event</label>
+          <textarea id="b-message" name="message" required placeholder="Share details about your event, goals, and how Coss can help..."></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit">Submit Booking Request &rarr;</button>
+        </div>
+      </form>
+      <div class="form-success" id="form-success">
+        <h3>Request Received!</h3>
+        <p>Thanks for reaching out. Coss's team will get back to you within 48 hours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-bg"></div>
+    <div class="cta-content">
+      <h2>Ready to <span>Ignite</span><br>Your Event?</h2>
+      <p>Coss delivers raw, unfiltered keynotes that leave audiences transformed. Corporate events, conferences, universities, and more.</p>
+      <a href="#booking" class="hero-cta" onclick="showPage('home')">Book Coss Now &rarr;</a>
+    </div>
+  </section>
+
+</div>
+
+<!-- =================== PRESS PAGE =================== -->
+<div id="page-press" class="page">
+
+  <!-- PRESS HERO -->
+  <section class="press-hero">
+    <div class="press-hero-bg"></div>
+    <div class="press-hero-content">
+      <div class="section-label">Media &amp; Coverage</div>
+      <h1>In the <span>Press</span></h1>
+      <p>Coss Marte's story has been featured in over 200 media outlets worldwide. From television to podcasts to print — the message of redemption keeps spreading.</p>
+    </div>
+  </section>
+
+  <!-- OUTLET BAR -->
+  <div class="outlet-bar">
+    <a class="outlet-badge" href="https://www.youtube.com/watch?v=XHQQyCRtl-4" target="_blank">Ellen</a>
+    <a class="outlet-badge" href="https://www.youtube.com/watch?v=ggT_3fjUts8" target="_blank">TEDx</a>
+    <a class="outlet-badge" href="https://www.cnn.com/2016/10/04/us/iyw-coss-marte" target="_blank">CNN</a>
+    <a class="outlet-badge" href="https://www.forbes.com/sites/annefield/2018/03/29/for-conbodys-founder-success-means-hiring-more-ex-offenders-like-himself/" target="_blank">Forbes</a>
+    <a class="outlet-badge" href="https://www.inc.com/magazine/201610/alix-stuart/conbody-building-stronger-lives-for-good.html" target="_blank">Inc.</a>
+    <a class="outlet-badge" href="https://open.spotify.com/episode/5Gi1otFpCrjGBH3UDMaoGd?si=RJsgMeY0SSWORijbA5cIPQ&nd=1&dlsi=7b491a08a795493e" target="_blank">Podcast</a>
+    <a class="outlet-badge" href="https://www.nbcnewyork.com/news/national-international/hustling-the-streets-from-dealing-drugs-to-fitness-bootcamp/2010129/" target="_blank">NBC</a>
+    <a class="outlet-badge" href="https://www.nytimes.com/2016/04/10/nyregion/at-a-gym-in-manhattan-fitness-tips-from-ex-convicts.html" target="_blank">New York Times</a>
+  </div>
+
+  <!-- PRESS GRID -->
+  <section class="press-grid-section">
+    <div class="press-grid">
+
+      <a class="press-card" href="https://www.youtube.com/watch?v=XHQQyCRtl-4" target="_blank">
+        <div class="press-card-type">Television</div>
+        <div class="press-card-title">Coss Marte on The Ellen DeGeneres Show</div>
+        <div class="press-card-outlet">Ellen DeGeneres Show</div>
+        <div class="press-card-excerpt">Coss shares his incredible story of transformation with Ellen — from running a drug empire to building ConBody and changing lives through fitness.</div>
+        <span class="press-card-link">Watch &rarr;</span>
+      </a>
+
+      <a class="press-card" href="https://www.youtube.com/watch?v=ggT_3fjUts8" target="_blank">
+        <div class="press-card-type">Talk</div>
+        <div class="press-card-title">TEDx: From Prisoner to Fitness Entrepreneur</div>
+        <div class="press-card-outlet">TEDx Talks</div>
+        <div class="press-card-excerpt">Coss delivers a powerful TEDx talk about losing 70 pounds in prison, founding ConBody, and creating second chances for the formerly incarcerated.</div>
+        <span class="press-card-link">Watch &rarr;</span>
+      </a>
+
+      <a class="press-card" href="https://open.spotify.com/episode/5Gi1otFpCrjGBH3UDMaoGd?si=RJsgMeY0SSWORijbA5cIPQ&nd=1&dlsi=7b491a08a795493e" target="_blank">
+        <div class="press-card-type">Podcast</div>
+        <div class="press-card-title">How to Build Purpose from Pain</div>
+        <div class="press-card-outlet">Impact Theory Podcast</div>
+        <div class="press-card-excerpt">Coss sits down for a deep conversation about resilience, entrepreneurship, and how he channeled his darkest moments into a mission-driven business.</div>
+        <span class="press-card-link">Listen &rarr;</span>
+      </a>
+
+      <a class="press-card" href="https://latintrends.com/conbody-founder-coss-marte-a-story-of-redemption/" target="_blank">
+        <div class="press-card-type">Feature</div>
+        <div class="press-card-title">ConBody Founder Coss Marte: A Story of Redemption</div>
+        <div class="press-card-outlet">LatinTRENDS</div>
+        <div class="press-card-excerpt">LatinTRENDS tells the full story of how Coss built a nationally recognized fitness brand and social enterprise from nothing after prison.</div>
+        <span class="press-card-link">Read &rarr;</span>
+      </a>
+
+      <a class="press-card" href="https://www.nbcnewyork.com/news/national-international/hustling-the-streets-from-dealing-drugs-to-fitness-bootcamp/2010129/" target="_blank">
+        <div class="press-card-type">Television</div>
+        <div class="press-card-title">Hustling the Streets: From Dealing Drugs to Fitness Bootcamp</div>
+        <div class="press-card-outlet">NBC New York</div>
+        <div class="press-card-excerpt">NBC profiles Coss Marte's transformation from drug dealer to fitness entrepreneur, building ConBody on the streets where he once hustled.</div>
+        <span class="press-card-link">Watch &rarr;</span>
+      </a>
+
+      <a class="press-card" href="https://www.nytimes.com/2016/04/10/nyregion/at-a-gym-in-manhattan-fitness-tips-from-ex-convicts.html" target="_blank">
+        <div class="press-card-type">Feature</div>
+        <div class="press-card-title">At a Gym in Manhattan, Fitness Tips From Ex-Convicts</div>
+        <div class="press-card-outlet">The New York Times</div>
+        <div class="press-card-excerpt">The New York Times explores ConBody's unique model — a Manhattan gym where formerly incarcerated trainers lead intense bodyweight workouts.</div>
+        <span class="press-card-link">Read &rarr;</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- PRESS PAGE CTA -->
+  <section class="cta-section">
+    <div class="cta-bg"></div>
+    <div class="cta-content">
+      <h2>Bring <span>Coss</span><br>to Your Stage</h2>
+      <p>From Fortune 500 stages to university auditoriums — Coss delivers keynotes that move people to action.</p>
+      <a href="#booking" onclick="showPage('home')" class="hero-cta">Book Coss to Speak &rarr;</a>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER (shared) -->
+<footer>
+  <div class="footer-brand">Coss Marte &copy; 2026</div>
+  <div class="footer-links">
+    <a href="#" onclick="showPage('home')">Home</a>
+    <a href="#" onclick="showPage('press')">Press</a>
+    <a href="#booking" onclick="showPage('home')">Booking</a>
+    <a href="https://www.instagram.com/cossmarte/" target="_blank">Instagram</a>
+  </div>
+</footer>
+
+<script>
+function showPageAndScroll(page, sectionId) {
+  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+  document.getElementById('page-' + page).classList.add('active');
+  setTimeout(function() {
+    document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+  }, 50);
+}
+
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+document.getElementById('booking-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var form = this;
+  var data = new FormData(form);
+  var subject = encodeURIComponent('Booking Request from ' + data.get('name'));
+  var body = encodeURIComponent(
+    'Name: ' + data.get('name') + '\n' +
+    'Email: ' + data.get('email') + '\n' +
+    'Organization: ' + data.get('organization') + '\n' +
+    'Event Type: ' + data.get('event_type') + '\n' +
+    'Event Date: ' + data.get('event_date') + '\n' +
+    'Audience Size: ' + data.get('audience_size') + '\n\n' +
+    'Message:\n' + data.get('message')
+  );
+  window.open('mailto:cossmarte@conbody.com?subject=' + subject + '&body=' + body, '_self');
+  form.style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+});
+</script>
+
+<!-- MOBILE TAB BAR -->
+<div class="mobile-tabs">
+  <a href="javascript:void(0)" onclick="showPage('home');window.scrollTo(0,0)"><span>&#8962;</span>Home</a>
+  <a href="javascript:void(0)" onclick="showPage('press');window.scrollTo(0,0)"><span>&#9783;</span>Press</a>
+  <a href="javascript:void(0)" onclick="showPageAndScroll('home','story')"><span>&#9733;</span>Story</a>
+  <a href="javascript:void(0)" onclick="showPageAndScroll('home','topics')"><span>&#9998;</span>Topics</a>
+  <a href="javascript:void(0)" onclick="showPage('home');setTimeout(function(){document.getElementById('booking').scrollIntoView({behavior:'smooth'})},100)"><span>&#9993;</span>Book</a>
+</div>
+
+</body>
+</html>
